@@ -1,0 +1,79 @@
+#!/bin/bash
+
+EXPECTED_ARGC=1
+#TIME_STAMP=$(date +"%m-%d-%y_%H:%M")
+
+if [ $# -ne $EXPECTED_ARGC ]
+  then
+    echo "arguments required:"
+    echo " 1 = fpq command file"
+    exit
+fi
+
+echo "ensuring testbed directory ..."
+cd ..
+cd testbench
+
+echo "copying files from parent directory ..."
+cp ../pq.h .
+cp ../fpq?.cpp .
+cp ../makefile .
+
+echo "building pqtests (see \"fpq.build.out\" for build results) ..."
+make fpq1.x >& fpq.build.out
+make fpq2.x >> fpq.build.out 2>>fpq.build.out
+make fpq3.x >> fpq.build.out 2>>fpq.build.out
+make fpq4.x >> fpq.build.out 2>>fpq.build.out
+make fpq5.x >> fpq.build.out 2>>fpq.build.out
+make fpq6.x >> fpq.build.out 2>>fpq.build.out
+
+
+echo "copying area51 versions ..."
+
+cp ~cop4530p/LIB/area51/fpq1.x fpq1c.x
+cp ~cop4530p/LIB/area51/fpq2.x fpq2c.x
+cp ~cop4530p/LIB/area51/fpq3.x fpq3c.x
+cp ~cop4530p/LIB/area51/fpq4.x fpq4c.x
+cp ~cop4530p/LIB/area51/fpq5.x fpq5c.x
+cp ~cop4530p/LIB/area51/fpq6.x fpq6c.x
+chmod 700 fpq*.x
+
+echo "testing with pqtests ..."
+fpq1c.x $1 > ftest1.correct
+fpq2c.x $1 > ftest2.correct
+fpq3c.x $1 > ftest3.correct
+fpq4c.x $1 > ftest4.correct
+fpq5c.x $1 > ftest5.correct
+fpq6c.x $1 > ftest6.correct
+
+fpq1.x $1 > ftest1.out
+fpq2.x $1 > ftest2.out
+fpq3.x $1 > ftest3.out
+fpq4.x $1 > ftest4.out
+fpq5.x $1 > ftest5.out
+fpq6.x $1 > ftest6.out
+
+echo "creating diffs ..."
+diff ftest1.correct ftest1.out > ftest1.diff
+diff ftest2.correct ftest2.out > ftest2.diff
+diff ftest3.correct ftest3.out > ftest3.diff
+diff ftest4.correct ftest4.out > ftest4.diff
+diff ftest5.correct ftest5.out > ftest5.diff
+diff ftest6.correct ftest6.out > ftest6.diff
+
+echo "test1 diff:"
+cat  ftest1.diff
+echo "test2 diff:"
+cat  ftest2.diff
+echo "test3 diff:"
+cat  ftest3.diff
+echo "test4 diff:"
+cat  ftest4.diff
+echo "test5 diff:"
+cat  ftest5.diff
+echo "test6 diff:"
+cat  ftest6.diff
+echo "see complete results in ftest?.out"
+
+rm *.x
+echo "end of check.fpq"

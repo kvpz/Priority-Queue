@@ -1,0 +1,97 @@
+Kevin Perez
+COP4530 Summer 2015
+Project 10 Log
+
+-----
+Brief
+-----
+[a] GOAL OF PROJECT:
+    -Define the ADT Priority Queue
+    -Implement the ADT Priority Queue as a generic associative container subject to
+     various constraints, including:
+     	     Push(t) <= O(size), Pop() = theta(1)
+    	     Push(t) = theta(1), Pop() <= O(size)
+    	     Push(t) <= O(log size), Pop() <= O(log size)
+    -Use namespaces to develop and test multiple implementations of an ADT
+
+A priority queue stores elements of typename T with a priority determined by an
+object of a predicate class P. The operations are syntactically queue-like but
+have associative semantics (rather than positional semantics, as in an ordinary
+queue). (Lacher, 2015)
+
+
+-----
+Tests
+-----
+While pq.h is being created, it is being tested with fpq.cpp. To test each 
+PriorityQueue variation, uncomment at least one of the variation prototypes
+at the top of fpq.cpp. What is left to be completed(start of this project) for
+each variation of of PriorityQueue is the implementation of Push(), Pop() and Front().
+
+8/2/15
+-First day of testing starting with pq1.
+
+pq1:
+-Ran perfectly on first implementations.
+
+pg4:
+-Not popping correctly. Issue was because of incorrect assignment; and there was
+also a redundance in code (fsu::Swap(*i, c_.Back()) which was not required after
+swapping in the while loop. 
+
+--------------------------
+Design and Implementations
+--------------------------
+  nmsp  stbl container element order central algorithm      push     pop       front
+  ----  ---- --------- ------------- -------------------    ----     ---       -----
+  pq1   yes  List      unordered     fsu::g_max_element()   O(1)     O(n)      O(n)
+  pq2   yes  MOList    sorted        MOList::Insert()       O(n)     O(1)      O(1)
+  pq3   no   Deque     unordered     fsu::g_max_element()   AO(1)    O(n)      O(n)
+  pq4   yes  Deque     unordered     fsu::g_max_element()   AO(1)    O(n)      O(n)
+  pq5   yes  MOVector  sorted        MOVector::Insert()     O(n)     O(1)      O(1)
+  pq6   no   Vector    heap          fsu::g_push/pop_heap() Olog n)  O(log n)  O(1)
+
+
+
+--------------------------------------------------
+Runtime of the various PriorityQueue methods
+--------------------------------------------------
+The algorithms used for Push(), Pop(), and Front() can be found in genalg.h/
+gheap.h. All genalg.h algorithms are based on sequential input and output which
+is always O(n) since the worse case is iterating through an entire set of items.
+
+(1) In the above chart, you can notice there is a pattern in the push, pop, and
+front() operations of each unordered and ordered containers used in the
+PriorityQueue implementations.
+I think most client of this class would prefer an ordered implementation because
+the only O(n) operation is that of insertion into a priority queue
+container. When considering a heap order, the longest operation would be O(log
+n) but for both push() and pop().
+A heap order is exponentially better than ordered/ unordered. Proof is below.
+
+  The worst, but still O(n), implementation in PQ would be Pop() of pq4 because
+  it has to first search for the item with the most priority in an unordered
+  set, which would take O(n) time PLUS moving that item ("leapfrog") to the
+  back, or front, of the deque where it can then be removed(using PopBack() or
+  PopFront(), respectively) which takes O(n). There may be some improvement in
+  time if you could somehow detect if the largest element if closer to the front
+  or back thus making only that particular operation thus making it have a
+  runtime of O(n/2), but that is irrelevant for PQ runtimes.
+  
+  
+The methods Clear, Empty, Size, GetPredicate, and Dump use the exact same
+statements in every PQ implementation.
+
+STATEMENT EXPLANATIONS (INFORMAL PROOFS):
+A heap order would be exponentially better than a simple order/ unordered
+implementation because if you were to push and then pop, for example, 10^30
+items, then the total cost of push and pop would be 10^30, where heap sort only
+requires (log 10^30)^2 = 900.
+
+FINAL TESTING RESULTS (before project submission.)
+Testing was performed after the implementation of each PQ with 'fpq?.x
+fpq.com1'. At the end I tested with pqsorttest-all.x which output the order
+in which items were pushed onto the queue followed by the output of how the data
+was organized in the containers (ordered/ unordered) and output which was
+ordered based on whether the items were being queue with a increasing or
+decreasing priority.

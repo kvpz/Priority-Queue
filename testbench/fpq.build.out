@@ -1,0 +1,6 @@
+clang++ -std=c++11 -Wall -Wextra -I. -I/home/courses/cop4530p/LIB/cpp -I/home/courses/cop4530p/LIB/tcpp -ofpq1.x fpq1.cpp
+make: clang++: Command not found
+make: *** [fpq1.x] Error 127
+clang++ -std=c++11 -Wall -Wextra -I. -I/home/courses/cop4530p/LIB/cpp -I/home/courses/cop4530p/LIB/tcpp -ofpq2.x fpq2.cpp
+make: clang++: Command not found
+make: *** [fpq2.x] Error 127

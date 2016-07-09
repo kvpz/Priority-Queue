@@ -1,0 +1,166 @@
+Enter [command] [string] [priority] ('M' for menu, 'Q' to quit)
+: E
+Q is empty
+Enter [command] [string] [priority] ('M' for menu, 'Q' to quit)
+: S
+Q size is 0
+Enter [command] [string] [priority] ('M' for menu, 'Q' to quit)
+: +
+  enter   string: aaa
+  enter priority: 20
+Enter [command] [string] [priority] ('M' for menu, 'Q' to quit)
+: +
+  enter   string: bbb
+  enter priority: 15
+Enter [command] [string] [priority] ('M' for menu, 'Q' to quit)
+: +
+  enter   string: ccc
+  enter priority: 25
+Enter [command] [string] [priority] ('M' for menu, 'Q' to quit)
+: +
+  enter   string: ddd
+  enter priority: 17
+Enter [command] [string] [priority] ('M' for menu, 'Q' to quit)
+: +
+  enter   string: eee
+  enter priority: 16
+Enter [command] [string] [priority] ('M' for menu, 'Q' to quit)
+: +
+  enter   string: fff
+  enter priority: 11
+Enter [command] [string] [priority] ('M' for menu, 'Q' to quit)
+: +
+  enter   string: ggg
+  enter priority: 5
+Enter [command] [string] [priority] ('M' for menu, 'Q' to quit)
+: +
+  enter   string: hhh
+  enter priority: 30
+Enter [command] [string] [priority] ('M' for menu, 'Q' to quit)
+: +
+  enter   string: iii
+  enter priority: 31
+Enter [command] [string] [priority] ('M' for menu, 'Q' to quit)
+: +
+  enter   string: jjj
+  enter priority: 29
+Enter [command] [string] [priority] ('M' for menu, 'Q' to quit)
+: +
+  enter   string: kkk
+  enter priority: 14
+Enter [command] [string] [priority] ('M' for menu, 'Q' to quit)
+: +
+  enter   string: lll
+  enter priority: 13
+Enter [command] [string] [priority] ('M' for menu, 'Q' to quit)
+: +
+  enter   string: mmm
+  enter priority: 12
+Enter [command] [string] [priority] ('M' for menu, 'Q' to quit)
+: +
+  enter   string: nnn
+  enter priority: 6
+Enter [command] [string] [priority] ('M' for menu, 'Q' to quit)
+: +
+  enter   string: ooo
+  enter priority: 9
+Enter [command] [string] [priority] ('M' for menu, 'Q' to quit)
+: +
+  enter   string: ppp
+  enter priority: 8
+Enter [command] [string] [priority] ('M' for menu, 'Q' to quit)
+: +
+  enter   string: qqq
+  enter priority: 7
+Enter [command] [string] [priority] ('M' for menu, 'Q' to quit)
+: +
+  enter   string: rrr
+  enter priority: 26
+Enter [command] [string] [priority] ('M' for menu, 'Q' to quit)
+: +
+  enter   string: sss
+  enter priority: 28
+Enter [command] [string] [priority] ('M' for menu, 'Q' to quit)
+: +
+  enter   string: ttt
+  enter priority: 27
+Enter [command] [string] [priority] ('M' for menu, 'Q' to quit)
+: E
+Q is not empty
+Enter [command] [string] [priority] ('M' for menu, 'Q' to quit)
+: S
+Q size is 20
+Enter [command] [string] [priority] ('M' for menu, 'Q' to quit)
+: F
+Front of Q == iii
+Enter [command] [string] [priority] ('M' for menu, 'Q' to quit)
+: -
+Popped 31:iii from Q
+Enter [command] [string] [priority] ('M' for menu, 'Q' to quit)
+: -
+Popped 30:hhh from Q
+Enter [command] [string] [priority] ('M' for menu, 'Q' to quit)
+: -
+Popped 29:jjj from Q
+Enter [command] [string] [priority] ('M' for menu, 'Q' to quit)
+: D
+Q contents:
+28:sss
+27:ttt
+20:aaa
+26:rrr
+17:ddd
+13:lll
+9:ooo
+15:bbb
+25:ccc
+16:eee
+14:kkk
+11:fff
+12:mmm
+5:ggg
+6:nnn
+8:ppp
+7:qqq
+Enter [command] [string] [priority] ('M' for menu, 'Q' to quit)
+: E
+Q is not empty
+Enter [command] [string] [priority] ('M' for menu, 'Q' to quit)
+: S
+Q size is 17
+Enter [command] [string] [priority] ('M' for menu, 'Q' to quit)
+: F
+Front of Q == sss
+Enter [command] [string] [priority] ('M' for menu, 'Q' to quit)
+: D
+Q contents:
+28:sss
+27:ttt
+20:aaa
+26:rrr
+17:ddd
+13:lll
+9:ooo
+15:bbb
+25:ccc
+16:eee
+14:kkk
+11:fff
+12:mmm
+5:ggg
+6:nnn
+8:ppp
+7:qqq
+Enter [command] [string] [priority] ('M' for menu, 'Q' to quit)
+: C
+Q has been cleared
+Enter [command] [string] [priority] ('M' for menu, 'Q' to quit)
+: E
+Q is empty
+Enter [command] [string] [priority] ('M' for menu, 'Q' to quit)
+: S
+Q size is 0
+Enter [command] [string] [priority] ('M' for menu, 'Q' to quit)
+: Q
+
+Have a nice day.

@@ -1,0 +1,8 @@
+clang++ -std=c++11 -Wall -Wextra -I. -I/home/courses/cop4530p/LIB/cpp -I/home/courses/cop4530p/LIB/tcpp -opqsorttest1.x pqsorttest1.cpp
+make: clang++: Command not found
+make: *** [pqsorttest1.x] Error 127
+make: *** No rule to make target `pqsorttest2.cpp', needed by `pqsorttest2.x'.  Stop.
+make: *** No rule to make target `pqsorttest3.cpp', needed by `pqsorttest3.x'.  Stop.
+make: *** No rule to make target `pqsorttest4.cpp', needed by `pqsorttest4.x'.  Stop.
+make: *** No rule to make target `pqsorttest5.cpp', needed by `pqsorttest5.x'.  Stop.
+make: *** No rule to make target `pqsorttest6.cpp', needed by `pqsorttest6.x'.  Stop.

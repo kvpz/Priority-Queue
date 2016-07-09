@@ -1,0 +1,81 @@
+#!/bin/bash
+
+EXPECTED_ARGC=1
+#TIME_STAMP=$(date +"%m-%d-%y_%H:%M")
+
+if [ $# -ne $EXPECTED_ARGC ]
+  then
+    echo "arguments required:"
+    echo " 1 = sorttest data file <int>"
+    exit
+fi
+
+echo "ensuring testbed directory ..."
+cd ..
+cd testbench
+
+echo "copying files from parent directory ..."
+cp ../pq.h .
+cp ../pqsorttest?.cpp .
+cp ../makefile .
+
+
+make fpq1.x >& fpq.build.out
+make fpq2.x >> fpq.build.out 2>>fpq.build.out
+
+echo "building pqsorttests (see \"pqsort.build.out\" for build results) ..."
+make pqsorttest1.x >& pqsort.build.out
+make pqsorttest2.x >> pqsort.build.out 2>> pqsort.build.out
+make pqsorttest3.x >> pqsort.build.out 2>> pqsort.build.out
+make pqsorttest4.x >> pqsort.build.out 2>> pqsort.build.out
+make pqsorttest5.x >> pqsort.build.out 2>> pqsort.build.out
+make pqsorttest6.x >> pqsort.build.out 2>> pqsort.build.out
+
+echo " copying area51 versions ..."
+cp ~cop4530p/spring13/area51/pqsorttest1.x pqsorttest1c.x
+cp ~cop4530p/spring13/area51/pqsorttest2.x pqsorttest2c.x
+cp ~cop4530p/spring13/area51/pqsorttest3.x pqsorttest3c.x
+cp ~cop4530p/spring13/area51/pqsorttest4.x pqsorttest4c.x
+cp ~cop4530p/spring13/area51/pqsorttest5.x pqsorttest5c.x
+cp ~cop4530p/spring13/area51/pqsorttest6.x pqsorttest6c.x
+chmod 700 pqsorttest*.x
+
+echo "testing with pqsorttests ..."
+pqsorttest1c.x $1 > sorttest1.correct
+pqsorttest2c.x $1 > sorttest2.correct
+pqsorttest3c.x $1 > sorttest3.correct
+pqsorttest4c.x $1 > sorttest4.correct
+pqsorttest5c.x $1 > sorttest5.correct
+pqsorttest6c.x $1 > sorttest6.correct
+
+pqsorttest1.x $1 > sorttest1.out
+pqsorttest2.x $1 > sorttest2.out
+pqsorttest3.x $1 > sorttest3.out
+pqsorttest4.x $1 > sorttest4.out
+pqsorttest5.x $1 > sorttest5.out
+pqsorttest6.x $1 > sorttest6.out
+
+echo " creating diffs ..."
+diff sorttest1.correct sorttest1.out > sorttest1.diff
+diff sorttest2.correct sorttest2.out > sorttest2.diff
+diff sorttest3.correct sorttest3.out > sorttest3.diff
+diff sorttest4.correct sorttest4.out > sorttest4.diff
+diff sorttest5.correct sorttest5.out > sorttest5.diff
+diff sorttest6.correct sorttest6.out > sorttest6.diff
+
+echo "sorttest1 diff:"
+cat   sorttest1.diff
+echo "sorttest2 diff:"
+cat   sorttest2.diff
+echo "sorttest3 diff:"
+cat   sorttest3.diff
+echo "sorttest4 diff:"
+cat   sorttest4.diff
+echo "sorttest5 diff:"
+cat   sorttest5.diff
+echo "sorttest6 diff:"
+cat   sorttest6.diff
+echo "see complete results in sorttest?.out"
+
+rm *.x
+echo "end of check.sorttest"
